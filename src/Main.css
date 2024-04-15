@@ -1,0 +1,18 @@
+ul{
+     
+    display: inline-block;
+    color: azure;
+    text-decoration: none;
+     
+
+      }
+   
+   ul:hover{
+   background-color:rgb(126, 209, 199); 
+   
+   }
+   nav{
+    font-size: large;
+    background-color:rgb(192, 210, 208);
+   }
+   
