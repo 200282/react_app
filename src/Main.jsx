@@ -1,6 +1,6 @@
 import React , {Component , useState,useContext, createContext} from "react";
 import { Home } from "./Home";
-import { Link } from "react-router-dom";
+import { Link , useHistory} from "react-router-dom";
 import './Main.css';
 export const m = createContext();
 export function Main(){

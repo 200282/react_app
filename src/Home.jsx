@@ -1,24 +1,35 @@
-import React , {Component , useContext , useEffect, useState} from "react";
-import { json } from "react-router-dom";
-import {m} from "./Main"
-import { Main } from './Main';
-import Students from './Students.json';
+import React , {Component , useContext , useEffect, useState,useRef} from "react";
+
+
+
 
 export function Home(){
-  const n = Students.map(r=>{return(<h3 >{r.name}</h3>);  }) ; 
-  const i= Students.map(r=>{return(<h3 >{r.id}</h3>);  }) ; 
-  const g = Students.map(r=>{return(<h3 >{r.grade}</h3>);  }) ;   
-            
+
+  const [stream,setstream]=useState();
+  const myvideo=useRef();
+
+  useEffect(() => {
+    navigator.mediaDevices.getUserMedia({video:true,audio:true}).then(
+      (stream)=>{
+      
+          if(myvideo.current){
+         myvideo.current.srcObject = stream;
+   console.log("stream  :  ",stream);
+   setstream(stream);
+     }});
+
+  },[]);
+
    return(<React.Fragment>
-<table>
-<tr><th>id</th>
-<th>name</th>
-<th>grade</th>
-</tr>
-<td>{i}</td>
-<td>{n}</td>
-<td>{g}</td>
-</table>
-<input type="text" ></input >
+ <video   className="video"
+playsInline
+muted
+ref={myvideo}
+autoPlay
+style={{ width: "700px",margin:"6px" , display:"inline-block"}}
+
+
+/>
+
 </React.Fragment>
     )}
